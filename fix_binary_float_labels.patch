@@ -1,0 +1,29 @@
+--- a/vesuvius/src/vesuvius/ink_detection/preprocessing/validate_segments.py
++++ b/vesuvius/src/vesuvius/ink_detection/preprocessing/validate_segments.py
+@@ -244,7 +244,7 @@
+     return np.ascontiguousarray(np.max(color, axis=0))
+ 
+ 
+-def _preview_invalid_values(values: set[int]) -> str:
++def _preview_invalid_values(values: set[int | float]) -> str:
+     ordered = sorted(values)
+     preview = ", ".join(str(value) for value in ordered[:8])
+     if len(ordered) > 8:
+@@ -275,14 +275,14 @@
+     if _label_has_alpha_channel(raw_shape):
+         issues.append("label image has an alpha channel")
+ 
+-    invalid_values: set[int] = set()
++    invalid_values: set[int | float] = set()
+     for tile in _iter_label_tiles(path, workers=workers):
+         normalized = _normalize_label_tile(tile, path)
+         tile_values = np.unique(normalized)
+         invalid_values.update(
+-            int(value)
++            value
+             for value in tile_values.tolist()
+-            if int(value) not in ALLOWED_BINARY_LABEL_VALUES
++            if value not in ALLOWED_BINARY_LABEL_VALUES
+         )
+         if len(invalid_values) > 8:
+             break

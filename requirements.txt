@@ -1,0 +1,6 @@
+numpy==2.5.4
+tifffile==2026.10.15
+zarr==3.4.2
+tqdm==4.70.1
+pytest==9.2.0
+imagecodecs==2026.10.10

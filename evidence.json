@@ -1,0 +1,107 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "versions": {
+    "numpy": "2.5.4",
+    "tifffile": "2026.10.15",
+    "zarr": "3.4.2",
+    "tqdm": "4.70.1",
+    "pytest": "9.2.0",
+    "imagecodecs": "2026.10.10"
+  },
+  "sha256": {
+    "upstream_validate_segments.py": "be62d156a21169b00812526863cff576126d92e49261ec3b22c604ce2e792421",
+    "patched_validate_segments.py": "f3b4e332e43e033053497c3eb5275f40f25a88b83ee949f40ddca3026e69fac5",
+    "test_label_values.py": "1075efb4d88eb991a67e5591dd2e60194e8064db7e5a3b0d7295cc577ac26f59",
+    "fix_binary_float_labels.patch": "9748209a5061c0f5bdaf9ce5b38e10e6ae204c2171ccf567fc0d8fb967271be3",
+    "test_independent.py": "2a8afe997341b3abef35e77293440fe9c9678564e421a6bafff11e1d5fb8b4ea",
+    "real_data_result.json": "72c8eb5ab64b88c3d1c7d7d3dd39ed327de784b07e0ece2e29af421cb23ac94f",
+    "real_supervision_result.json": "fd98781f2835f2db6e132af2455f43727d4ccb97b095d604288b655c5dc4258d"
+  },
+  "upstream_commit": "d57c28ebee8776b618f9851c2289cc407ea99dd4",
+  "upstream_blob": "0e2069fd4f619da80cdc0a3da45fb8ceccf539a2",
+  "fixture_origin": "Main and independent regression suites use synthetic TIFF files. Separate compatibility tests read two original public masks; see real_data_compatibility and real_supervision_compatibility.",
+  "baseline": {
+    "passed": 10,
+    "failed": 19
+  },
+  "patched": {
+    "passed": 29,
+    "failed": 0
+  },
+  "independent_review": {
+    "methods": 3,
+    "cases": 17,
+    "result": "passed",
+    "kind": "automated synthetic TIFF review, not human validation",
+    "overlap": "overlaps main regression behaviors; counts not additive defects"
+  },
+  "real_data_compatibility": {
+    "source_url": "https://huggingface.co/buckets/scrollprize/datasets/tree/ink/0500p2/-1/-1_inklabels.tif",
+    "segment_id": "ink/0500p2/-1",
+    "bytes": 2364343,
+    "sha256": "9dc65d6a83ac3e932e0579f0d577e56f17972b9d57910ee8df0fc993d92e2c8b",
+    "license_url": "https://dl.ash2txt.org/LICENSE.txt",
+    "source_status": "original public Hugging Face download; no conversion",
+    "imagecodecs_version": "2026.10.10",
+    "series_shape": [
+      24659,
+      13696
+    ],
+    "dtype": "uint8",
+    "compression": "LZW",
+    "page_count": 1,
+    "results": {
+      "original": {
+        "issues": [],
+        "seconds": 1.2266340540372767
+      },
+      "patched": {
+        "issues": [],
+        "seconds": 1.3317910160403699
+      }
+    },
+    "unique_values": [
+      0,
+      255
+    ],
+    "decoded_tile_count": 5238,
+    "sha256_after": "9dc65d6a83ac3e932e0579f0d577e56f17972b9d57910ee8df0fc993d92e2c8b",
+    "unchanged": true,
+    "interpretation": "Both versions accept this original valid uint8 mask. This is real-data compatibility evidence, not a reproduction of the fractional-value defect in released data."
+  },
+  "real_supervision_compatibility": {
+    "source_url": "https://huggingface.co/buckets/scrollprize/datasets/tree/ink/0500p2/-1/-1_supervision_mask.tif",
+    "segment_id": "ink/0500p2/-1",
+    "bytes": 2358265,
+    "sha256": "7920e1eb28f5972209eff9f12afadde0f43385272080210e0395c60615fef770",
+    "license_url": "https://dl.ash2txt.org/LICENSE.txt",
+    "source_status": "original public Hugging Face download; no conversion",
+    "imagecodecs_version": "2026.10.10",
+    "series_shape": [
+      24659,
+      13696
+    ],
+    "dtype": "uint8",
+    "compression": "LZW",
+    "page_count": 1,
+    "results": {
+      "original": {
+        "issues": [],
+        "seconds": 1.3029918490210548
+      },
+      "patched": {
+        "issues": [],
+        "seconds": 1.2882855979842134
+      }
+    },
+    "unique_values": [
+      0,
+      255
+    ],
+    "decoded_tile_count": 5238,
+    "sha256_after": "7920e1eb28f5972209eff9f12afadde0f43385272080210e0395c60615fef770",
+    "unchanged": true,
+    "interpretation": "Both versions accept this original valid uint8 mask. This is per-file real-data compatibility evidence, not a full-dataset CLI run or reproduction of the fractional-value defect in released data."
+  },
+  "full_cli_real_data_status": "Not run. Real-data compatibility was tested per file only."
+}
